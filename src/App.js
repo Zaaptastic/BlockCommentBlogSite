@@ -1,6 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 
+import ArticleArchive from './components/ArticleArchive'
+
 function App() {
   return (
     <div className="App">
@@ -10,6 +12,8 @@ function App() {
           Hello World!
         </p>
       </header>
+
+      <ArticleArchive />
     </div>
   );
 }
