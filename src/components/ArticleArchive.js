@@ -1,5 +1,7 @@
 import React from 'react';
 
+import ArticleSummary from './ArticleSummary'
+
 
 class ArticleArchive extends React.Component {
     
@@ -20,16 +22,13 @@ class ArticleArchive extends React.Component {
             <h1>Articles</h1>
 
             {this.state.data.map(article => {
-                var url = "/" + article.articleId.S + "/" + article.title.S.replaceAll(' ', '-');
-                return (
-                    <div key={article.articleId.S}>
-                        <h2><a href={url}>{article.title.S}</a></h2>
-                        <i>Published: {article.publicationDate.S}<br />
-                        {article.estimatedReadingTime.N} minute read</i>
-                        <br />
-                        <p>{article.summary.S}</p>
-                    </div>
-                );
+                return <ArticleSummary 
+                    title={article.title.S} 
+                    articleId={article.articleId.S} 
+                    publicationDate={article.publicationDate.S} 
+                    estimatedReadingTime={article.estimatedReadingTime.N} 
+                    summary={article.summary.S} 
+                    />
             }
 
             )}
