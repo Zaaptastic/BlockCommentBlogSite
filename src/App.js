@@ -6,12 +6,7 @@ import ArticleArchive from './components/ArticleArchive'
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Hello World!
-        </p>
-      </header>
+      <h1>Welcome to Block Comment</h1>
 
       <ArticleArchive />
     </div>
