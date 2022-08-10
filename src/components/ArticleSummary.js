@@ -2,7 +2,7 @@ import React from 'react';
 
 class ArticleSummary extends React.Component{
     render() {
-        var url = "/" + this.props.articleId + "/" + this.props.title.replaceAll(' ', '-');
+        var url = "/article/" + this.props.articleId + "/" + this.props.title.replaceAll(' ', '-');
 
         return (
             <div key={this.props.articleId}>
