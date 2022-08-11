@@ -13,16 +13,16 @@ class ArticleContent extends React.Component{
     }
 
     componentDidMount(){
-        this.setState({articleId: this.props.params.articleId});  
+        var url = 'https://zpr4erjsj77gssqkzsimcnvwmm0herkv.lambda-url.us-east-1.on.aws/?articleId=' + this.props.params.articleId;
+        console.log(url);
+        fetch(url)
+            .then(res => res.json())
+            .then(json => this.setState({data: json}));
     }
 
     render() {
-        return (
-            <div>
-                <h1>This is an Article Title</h1>
-                <p> articleId: {this.state.articleId} </p>
-            </div>
-        );
+        // DangerouslySet HTML, we accept this risk since content is self-controlled via publishing
+        return <p dangerouslySetInnerHTML={{ __html: this.state.data.content }} />;
     }
 }
 
