@@ -11,7 +11,12 @@ class ArticleArchive extends React.Component {
     }
 
     componentDidMount() {
-        fetch('https://jvnqmq63tuabrbtvppst2r2zkq0ezmbs.lambda-url.us-east-1.on.aws/')
+        var url = 'https://4jb6hw5c6spqawgfexwpkyhjxy0rbimf.lambda-url.us-east-1.on.aws/';
+        if ('production' === process.env.NODE_ENV) {
+            var url = 'https://jvnqmq63tuabrbtvppst2r2zkq0ezmbs.lambda-url.us-east-1.on.aws/';
+        }
+
+        fetch(url)
             .then(res => res.json())
             .then(json => this.setState({data: json}));
     }
