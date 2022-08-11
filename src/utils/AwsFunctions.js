@@ -1,28 +1,50 @@
 
 import * as AWS from 'aws-sdk'
-import { DynamoDBClient, 
-    GetItemCommand 
-} from "@aws-sdk/client-dynamodb";
-const dynamoDBClient = new DynamoDBClient({ region: 'us-east-1'});
 
+AWS.config.update({
+  region: 'us-east-1',
+  accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY
+});
 
-console.log(process.env.AWS_ACCESS_KEY_ID);
-export const fetchMetadata = () => {
-    const input = {
-        TableName: "BlockCommentBlogMetadata",
-        //ProjectionExpression: "",
-        Key: { 'articleId': {S:'001'}, 'publicationDate': {S: '2022-08-08'} } 
-    }
-    const command = new GetItemCommand(input);
+var lambdaClient = new AWS.Lambda();
 
-    dynamoDBClient.send(command, function(err, data) {
-        if (err) {
-          console.log("Error", err);
-          return err;
-        } else {
-          console.log("Success", data.Item);
+export async function fetchArticleMetadata() {
+  var functionName = 'BlockCommentBlogBackend_getArticleList_devo';
+  if ('production' === process.env.NODE_ENV) {
+    functionName = 'BlockCommentBlogBackend_getArticleList';
+  }
 
-          return data.Item;
-        }
-    });
+  var params = {
+    FunctionName: functionName,
+    Payload: ''
+  }
+
+  var response = await lambdaClient.invoke(params).promise();
+
+  var json = JSON.parse(response.$response.httpResponse.body);
+  return json.body;
+}
+
+export async function fetchArticleContent(inputArticleId) {
+  var functionName = 'BlockCommentBlogBackend_getArticle_devo';
+  if ('production' === process.env.NODE_ENV) {
+    functionName = 'BlockCommentBlogBackend_getArticle';
+  }
+
+  var payload = {
+    articleId: inputArticleId
+  }
+  var params = {
+    FunctionName: functionName,
+    Payload: JSON.stringify(payload)
+  }
+
+  var response = await lambdaClient.invoke(params).promise();
+
+  var json = JSON.parse(response.$response.httpResponse.body);
+  if (200 !== json.statusCode) {
+    throw new Error("Unable to find article content")
+  }
+  return json.body;
 }

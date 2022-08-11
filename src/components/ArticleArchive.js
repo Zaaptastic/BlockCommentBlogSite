@@ -1,6 +1,7 @@
 import React from 'react';
 
 import ArticleSummary from './ArticleSummary'
+import { fetchArticleMetadata } from '../utils/AwsFunctions'
 
 
 class ArticleArchive extends React.Component {
@@ -11,21 +12,14 @@ class ArticleArchive extends React.Component {
     }
 
     componentDidMount() {
-        var url = 'https://4jb6hw5c6spqawgfexwpkyhjxy0rbimf.lambda-url.us-east-1.on.aws/';
-        if ('production' === process.env.NODE_ENV) {
-            url = 'https://jvnqmq63tuabrbtvppst2r2zkq0ezmbs.lambda-url.us-east-1.on.aws/';
-        }
-
-        fetch(url)
-            .then(res => res.json())
-            .then(json => this.setState({data: json}));
+        fetchArticleMetadata()
+            .then(response => this.setState({data: response}));
     }
 
     render() {
         return (
             <div>
             <h1>Articles</h1>
-
             {this.state.data.map(article => {
                 return <ArticleSummary 
                     title={article.title.S} 
