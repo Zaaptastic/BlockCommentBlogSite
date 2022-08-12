@@ -5,7 +5,7 @@ class ArticleSummary extends React.Component{
         var url = "/article/" + this.props.articleId + "/" + this.props.title.replaceAll(' ', '-');
 
         return (
-            <div key={this.props.articleId}>
+            <div>
                 <h2><a href={url}>{this.props.title}</a></h2>
                 <i>Published: {this.props.publicationDate}<br />
                 {this.props.estimatedReadingTime} minute read</i>
