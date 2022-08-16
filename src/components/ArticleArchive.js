@@ -28,6 +28,8 @@ class ArticleArchive extends React.Component {
                         publicationDate={article.publicationDate.S} 
                         estimatedReadingTime={article.estimatedReadingTime.N} 
                         summary={article.summary.S} 
+                        imageUrl={article.imageUrl.S}
+                        tags={article.tags.L}
                     /></div>
             }
 
