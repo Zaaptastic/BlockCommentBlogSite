@@ -11,9 +11,11 @@
     font-size: 20px;
 }
 
-#logo {
+#logo-image {
     float: left;
+    height: 60%;
     padding-left: 3%;
+    padding-top: 10px;
 }
 
 #navigation {

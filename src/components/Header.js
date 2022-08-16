@@ -9,9 +9,7 @@ class Header extends React.Component{
             <div id='header-wrapper'>
                 <DevoBanner />
                 <div id='header'>
-                    <span id='logo'>
-                        <a href='/'><img src={logo} height='50px'></img></a>
-                    </span>
+                    <a href='/'><img src={logo} id='logo-image'></img></a>
                     <span id='navigation'>
                         <a href='/' class='navigation-link'>Posts</a>
                         
