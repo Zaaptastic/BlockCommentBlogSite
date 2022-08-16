@@ -5,11 +5,13 @@ import ArticleArchive from './components/ArticleArchive'
 import ArticleContent from './components/ArticleContent'
 import ErrorContent from './components/ErrorContent'
 import Header from './components/Header'
+import Footer from './components/Footer'
 
 function App() {
   return (
     <div className="App">
       <Header />
+
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<ArticleArchive />} />
@@ -19,7 +21,8 @@ function App() {
           <Route path="*" element={<ErrorContent />} />
         </Routes>
       </BrowserRouter>
-      
+
+      <Footer />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import '../styles/Header.css'
-import logo from '../logo.png'
+import logo from '../assets/logo.png'
 import React from 'react';
 import DevoBanner from './DevoBanner'
 
