@@ -1,11 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
+import './styles/App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import ArticleArchive from './components/ArticleArchive'
 import ArticleContent from './components/ArticleContent'
 import ErrorContent from './components/ErrorContent'
-import Header from './components/DevoBanner'
+import Header from './components/Header'
 
 function App() {
   return (

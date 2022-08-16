@@ -1,11 +1,23 @@
+import '../styles/Header.css'
+import logo from '../logo.png'
 import React from 'react';
 import DevoBanner from './DevoBanner'
 
 class Header extends React.Component{
     render() {
         return (
-            <div>
+            <div id='header-wrapper'>
                 <DevoBanner />
+                <div id='header'>
+                    <span id='logo'>
+                        <a href='/'><img src={logo} height='50px'></img></a>
+                    </span>
+                    <span id='navigation'>
+                        <a href='/' class='navigation-link'>Posts</a>
+                        
+                        <a href='/about' class='navigation-link'>About Me</a>
+                    </span>
+                </div>
             </div>
         );
     }

@@ -1,0 +1,31 @@
+#devo-banner {
+    border: 15px solid darkblue;
+}
+
+#header {
+    height: 50px;
+    width: 100%;
+    background-color: var(--main-white);
+    padding-bottom: 3%;
+    padding-top: 3%;
+    font-size: 20px;
+}
+
+#logo {
+    float: left;
+    padding-left: 5%;
+}
+
+#navigation {
+    float: right;
+    width: 50%;
+    height: 100%;
+    text-align: right;
+    font-weight: bold;
+    padding-right: 2%;
+    padding-top: 10px;
+}
+
+.navigation-link {
+    padding-right: 5%;
+}
