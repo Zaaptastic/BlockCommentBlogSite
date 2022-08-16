@@ -4,14 +4,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import ArticleArchive from './components/ArticleArchive'
 import ArticleContent from './components/ArticleContent'
-import DevoBanner from './components/DevoBanner'
 import ErrorContent from './components/ErrorContent'
+import Header from './components/DevoBanner'
 
 function App() {
   return (
     <div className="App">
-      <DevoBanner />
-      <h1>Welcome to Block Comment</h1>
+      <Header />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<ArticleArchive />} />
