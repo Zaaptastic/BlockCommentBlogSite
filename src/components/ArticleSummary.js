@@ -1,3 +1,4 @@
+import '../styles/ArticleSummary.css'
 import React from 'react';
 
 class ArticleSummary extends React.Component{
@@ -13,9 +14,12 @@ class ArticleSummary extends React.Component{
         parsedTags.sort();
 
         return (
-            <div>
+            <div id='article-summary'>
                 <img src={this.props.imageUrl} alt={this.props.title} />
                 <h2><a href={url}>{this.props.title}</a></h2>
+                {this.props.isHero === true &&
+                    <div>Is a hero!</div>
+                }
                 <i>Published: {localizedDate}<br />
                 {parsedTags.map(tag => {
                     return <div id='tag' key={tag}>{tag}</div>
