@@ -1,3 +1,4 @@
+import '../styles/ArticleArchive.css'
 import React from 'react';
 
 import ArticleSummary from './ArticleSummary'
@@ -18,11 +19,10 @@ class ArticleArchive extends React.Component {
 
     render() {
         var articles = this.state.data;
-        console.log(articles);
         var heroArticle = this.state.data.shift();
-        console.log(heroArticle);
+        
         return (
-            <div>
+            <div id='article-archive-wrapper'>
                 <div id='hero-article-wrapper'>
                     {heroArticle !== undefined &&
                         <ArticleSummary
@@ -38,18 +38,20 @@ class ArticleArchive extends React.Component {
                     }
                 </div>
 
-                {articles.map(article => {
-                    return <div key={article.articleId.S}>
-                        <ArticleSummary
-                            title={article.title.S}
-                            articleId={article.articleId.S}
-                            publicationDate={article.publicationDate.S}
-                            estimatedReadingTime={article.estimatedReadingTime.N}
-                            summary={article.summary.S}
-                            imageUrl={article.imageUrl.S}
-                            tags={article.tags.L}
-                        /></div>
-                })}
+                <div id='article-history-wrapper'>
+                    {articles.map(article => {
+                        return <div key={article.articleId.S}>
+                            <ArticleSummary
+                                title={article.title.S}
+                                articleId={article.articleId.S}
+                                publicationDate={article.publicationDate.S}
+                                estimatedReadingTime={article.estimatedReadingTime.N}
+                                summary={article.summary.S}
+                                imageUrl={article.imageUrl.S}
+                                tags={article.tags.L}
+                            /></div>
+                    })}
+                </div>
             </div>
         );
     }

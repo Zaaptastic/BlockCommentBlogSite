@@ -11,9 +11,9 @@ class Header extends React.Component{
                 <div id='header'>
                     <a href='/'><img src={logo} id='logo-image'></img></a>
                     <span id='navigation'>
-                        <a href='/' class='navigation-link'>Posts</a>
+                        <a href='/' className='navigation-link'>Posts</a>
                         
-                        <a href='/about' class='navigation-link'>About Me</a>
+                        <a href='/about' className='navigation-link'>About Me</a>
                     </span>
                 </div>
             </div>

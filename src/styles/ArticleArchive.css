@@ -1,0 +1,16 @@
+#article-archive-wrapper {
+    height: 100%;
+    width: 100%;
+}
+
+#hero-article-wrapper {
+    width: 100%;
+    background-color: var(--main-light-blue);
+    display: inline-block;
+}
+
+#article-history-wrapper {
+    width: 100%;
+    background: linear-gradient(to bottom, var(--main-light-blue) 50px, var(--main-white) 50px 50%);
+    display: inline-block;
+}
