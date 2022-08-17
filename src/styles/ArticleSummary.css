@@ -1,7 +1,40 @@
-#hero-article-wrapper {
-    font-weight: bold;
+
+#hero-article-info {
+    height: 100%;
+    width: 50%;
+    float: left;
+    padding-top: 10%;
+    padding-bottom: 10%;
+    padding-left: 8%;
+    text-align: left;
+    color: var(--main-white);
 }
 
-#article-summary {
-    
+#hero-article-image-wrapper {
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+
+#hero-article-date, #hero-article-reading-time {
+    font-size: 13px;
+}
+
+#hero-article-title > a {
+    color: var(--main-white);
+}
+
+#hero-article-summary {
+    padding-top: 3%;
+    padding-bottom: 3%;
+    font-size: 20px;
+}
+
+.hero-article-tag {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-right: 10px;
+    border-radius: 2rem;
+    background-color: var(--main-dark-blue);
 }
