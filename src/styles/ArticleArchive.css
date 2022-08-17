@@ -1,10 +1,8 @@
 #article-archive-wrapper {
-    height: 100%;
     width: 100%;
 }
 
 #hero-article-wrapper {
-    height: 100%;
     width: 100%;
     background-color: var(--main-light-blue);
     display: inline-block;
