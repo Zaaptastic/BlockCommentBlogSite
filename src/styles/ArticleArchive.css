@@ -4,7 +4,7 @@
 
 #hero-article-wrapper {
     height: 100%;
-    width: 100%;
+    width: 84%;
     padding-left: 8%;
     padding-right: 8%;
     padding-top: 5%;
@@ -16,7 +16,7 @@
 #article-history-wrapper {
     width: 90%;
     height: 100%;
-    background: linear-gradient(to bottom, var(--main-light-blue) 50px, var(--main-white) 50px 50%);
+    background: linear-gradient(to bottom, var(--main-light-blue) 100px, var(--main-white) 100px 50%);
     padding-left: 5%;
     padding-right: 5%;
     display: inline-block;

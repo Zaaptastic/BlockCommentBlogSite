@@ -1,5 +1,5 @@
 #hero-article-info {
-    width: 45%;
+    width: 50%;
     float: left;
     padding-top: 2%;
     text-align: left;
@@ -8,8 +8,8 @@
 
 #hero-article-image-wrapper {
     float: left;
-    padding-right: 5%;
-    width: 50%;
+    padding-left: 5%;
+    width: 45%;
 }
 
 #hero-article-image {
