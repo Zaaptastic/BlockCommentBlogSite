@@ -15,7 +15,7 @@ class ArticleSummary extends React.Component{
 
         if (this.props.isHero === true) {
             return (
-                <div className='article-summary'>
+                <div className='hero-article-summary-wrapper'>
                     <div id='hero-article-info'>
                         <p id='hero-article-date'>{localizedDate}</p>
                         <h1 id='hero-article-title'><a href={url}>{this.props.title}</a></h1>
@@ -26,25 +26,19 @@ class ArticleSummary extends React.Component{
                         })}
                     </div>
                     <div id='hero-article-image-wrapper'>
-                        <img src={this.props.imageUrl} alt={this.props.title}  id='hero-article-image' />
+                        <img src={this.props.imageUrl} alt={this.props.title} id='hero-article-image' />
                     </div>
                 </div>
             );
         } else {
             return (
-                <div id='standard-article-summary' className='article-summary'>
-                    <img src={this.props.imageUrl} alt={this.props.title} />
-                    <h2><a href={url}>{this.props.title}</a></h2>
-                    {this.props.isHero === true &&
-                        <div>Is a hero!</div>
-                    }
-                    <i>Published: {localizedDate}<br />
-                    {parsedTags.map(tag => {
-                        return <div id='tag' key={tag}>{tag}</div>
-                    })}
-                    {this.props.estimatedReadingTime} minute read</i>
-                    <br />
-                    <p>{this.props.summary}</p>
+                <div id='standard-article-summary-wrapper' className='article-summary'>
+                    <div id='standard-article-image-wrapper'>
+                        <img src={this.props.imageUrl} alt={this.props.title} id='standard-article-image' />
+                    </div>
+                    <h2 id='standard-article-title'><a href={url}>{this.props.title}</a></h2>
+                    <p id='standard-article-date-time'>{localizedDate} • {this.props.estimatedReadingTime} minute read</p>
+                    <p id='standard-article-summary'>{this.props.summary}</p>
                 </div>
             );
         }
