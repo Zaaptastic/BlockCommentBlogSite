@@ -1,18 +1,19 @@
-
 #hero-article-info {
-    height: 100%;
-    width: 50%;
+    width: 45%;
     float: left;
-    padding-top: 8%;
-    padding-bottom: 8%;
-    padding-left: 8%;
+    padding-top: 2%;
     text-align: left;
     color: var(--main-white);
 }
 
 #hero-article-image-wrapper {
-    padding-top: 10%;
-    padding-bottom: 10%;
+    float: left;
+    padding-right: 5%;
+    width: 50%;
+}
+
+#hero-article-image {
+    width: 50%;
 }
 
 #hero-article-date, #hero-article-reading-time {
