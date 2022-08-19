@@ -4,7 +4,6 @@
   --main-light-blue: #456990;
   --main-dark-blue: #0f2938;
   --main-orange: #b2433c;
-  background: linear-gradient(to bottom, var(--main-light-blue) 85vh, var(--main-white) 85vh 100vh);
 }
 
 html, body {
