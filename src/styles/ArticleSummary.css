@@ -15,12 +15,11 @@
     float: left;
     text-align: right;
     width: 45%;
+    height: 100%;
 }
 
 #hero-article-image {
-    width: 60%;
-    max-width: 450px;
-    max-height: 530px;
+    height: 100%;
 }
 
 #hero-article-date, #hero-article-reading-time {
