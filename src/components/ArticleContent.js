@@ -25,7 +25,10 @@ class ArticleContent extends React.Component{
 
     render() {
         // DangerouslySet HTML, we accept this risk since content is self-controlled via publishing
-        return <p dangerouslySetInnerHTML={{ __html: this.state.data.content }} />;
+        return (
+        <div id='article-content-wrapper'>
+            <p dangerouslySetInnerHTML={{ __html: this.state.data.content }} />
+        </div>);
     }
 }
 
