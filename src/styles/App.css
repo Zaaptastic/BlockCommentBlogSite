@@ -4,7 +4,11 @@
   --main-light-blue: #456990;
   --main-dark-blue: #0f2938;
   --main-orange: #b2433c;
-  background-color: var(--main-white);
+  background: linear-gradient(to bottom, var(--main-light-blue) 80%, var(--main-white) 80% 100%);
+}
+
+html, body {
+  margin: 0;
 }
 
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900);

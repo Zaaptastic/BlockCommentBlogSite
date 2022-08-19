@@ -15,7 +15,7 @@ class ArticleSummary extends React.Component{
 
         if (this.props.isHero === true) {
             return (
-                <div className='hero-article-summary-wrapper'>
+                <div id='hero-article-summary-wrapper'>
                     <div id='hero-article-info'>
                         <p id='hero-article-date'>{localizedDate}</p>
                         <h1 id='hero-article-title'><a href={url}>{this.props.title}</a></h1>

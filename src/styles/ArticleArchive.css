@@ -9,15 +9,14 @@
     padding-right: 8%;
     padding-top: 5%;
     padding-bottom: 5%;
-    background-color: var(--main-light-blue);
     display: inline-block;
 }
 
 #article-history-wrapper {
-    width: 90%;
+    width: 86%;
     height: 100%;
-    background: linear-gradient(to bottom, var(--main-light-blue) 100px, var(--main-white) 100px 50%);
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 7%;
+    padding-right: 7%;
+    margin-top: 0;
     display: inline-block;
 }
