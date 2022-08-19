@@ -16,7 +16,7 @@ class Footer extends React.Component{
                     <a href='https://www.linkedin.com/'>
                         <img src={social_icon_linkedin} className='footer-icon'></img>
                     </a>
-                    <a href='mailto: rbchen16@gmail.com'>
+                    <a href='mailto: rbchen16+blog@gmail.com'>
                         <img src={social_icon_email} className='footer-icon'></img>
                     </a>
                 </span>
