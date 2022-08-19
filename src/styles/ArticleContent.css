@@ -1,4 +1,70 @@
 #article-content-wrapper {
     height: 100vh;
+    width: 84%;
     margin: 0;
+    padding-left: 8%;
+    padding-right: 8%;
+    padding-top: 8vh;
+    padding-bottom: 5vh;
+}
+
+/*  
+ *  Much of this is copied from the Hero Article CSS in ArticleSummary
+ *  TODO: Refactor Hero Data handling into a single structure
+ */
+
+#article-metadata-wrapper {
+    display: inline-block;
+    padding-bottom: 5%;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+#article-metadata-info {
+    width: 50%;
+    float: left;
+    padding-top: 2%;
+    padding-right: 5%;
+}
+
+#article-metadata-image-wrapper {
+    float: left;
+    text-align: right;
+    width: 45%;
+    height: 100%;
+}
+
+#article-metadata-image {
+    width: 100%;
+}
+
+#article-metadata-date, #article-metadata-reading-time {
+    font-size: 13px;
+}
+
+#article-metadata-title {
+    font-size: 40px;
+}
+
+#article-metadata-summary {
+    padding-top: 3%;
+    padding-bottom: 3%;
+    font-size: 30px;
+}
+
+.article-metadata-tag {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-right: 10px;
+    border-radius: 2rem;
+    background-color: var(--main-orange);
+    color: var(--main-white);
+}
+
+#article-content-text {
+    padding-top: 2%;
+    padding-left: 10%;
+    padding-right: 10%;
 }
