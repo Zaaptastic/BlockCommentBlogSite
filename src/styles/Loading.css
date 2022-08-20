@@ -9,15 +9,15 @@
 }
 
 #loading-logo {
-    width: 150px;
+    width: 8vw;
     float: left;
 }
 
 .loading-animation {
-    margin-left: 150px;
+    margin-left: 8vw;
 }
 
 #loading-wrapper {
-    padding-top: 15vh;
-    padding-left: 50vh;
+    padding-top: 25vh;
+    padding-left: 41vw;
 }

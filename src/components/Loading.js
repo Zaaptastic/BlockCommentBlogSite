@@ -11,7 +11,7 @@ class Loading extends React.Component {
                     <img src={iconLarge} id='loading-logo' alt='Loading Image' /><ReactLoading
                         type='balls' 
                         color='#0f2938' 
-                        height={150} width={200}
+                        height='8vw' width='10vw'
                         className='loading-animation' />
                 </div>
             </div>
