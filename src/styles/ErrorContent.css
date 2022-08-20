@@ -1,0 +1,15 @@
+#error-container {
+    padding-top: 15vh;
+    width: 100%;
+    text-align: center;
+}
+
+#error-message {
+    height: 100%;
+    width: 100%;
+    font-size: 80px;
+}
+
+#error-link-container > a {
+    color: var(--main-orange);
+}
