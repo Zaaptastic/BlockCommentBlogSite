@@ -1,0 +1,23 @@
+#loading-screen {
+    z-index: 10;
+    position: absolute;
+    top: 50px;
+    right: 0px;
+    bottom: 35px;
+    left: 0px;
+    background-color: var(--main-white);
+}
+
+#loading-logo {
+    width: 150px;
+    float: left;
+}
+
+.loading-animation {
+    margin-left: 150px;
+}
+
+#loading-wrapper {
+    padding-top: 15vh;
+    padding-left: 50vh;
+}

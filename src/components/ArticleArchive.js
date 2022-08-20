@@ -2,6 +2,7 @@ import '../styles/ArticleArchive.css'
 import React from 'react';
 
 import ArticleSummary from './ArticleSummary'
+import Loading from './Loading'
 import { fetchArticleMetadata } from '../utils/AwsFunctions'
 
 
@@ -9,12 +10,12 @@ class ArticleArchive extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { data: [] }
+        this.state = { data: [], isPageLoading: true }
     }
 
     componentDidMount() {
         fetchArticleMetadata()
-            .then(response => this.setState({ data: response }));
+            .then(response => this.setState({ data: response, isPageLoading: false }));
     }
 
     render() {
@@ -23,6 +24,7 @@ class ArticleArchive extends React.Component {
         
         return (
             <div id='article-archive-wrapper'>
+                {this.state.isPageLoading === true && <Loading />}
                 <div id='hero-article-wrapper'>
                     {heroArticle !== undefined &&
                         <ArticleSummary

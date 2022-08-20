@@ -2,7 +2,7 @@ import '../styles/ArticleContent.css'
 import React from 'react';
 import { useParams } from "react-router-dom";
 
-import ArticleSummary from './ArticleSummary'
+import Loading from './Loading'
 import { fetchArticleContent } from '../utils/AwsFunctions'
 
 function withParams(Component) {
@@ -13,12 +13,12 @@ class ArticleContent extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { data: {} }
+        this.state = { data: {}, isPageLoading: true }
     }
 
     componentDidMount() {
         fetchArticleContent(this.props.params.articleId)
-            .then(response => this.setState({ data: response }))
+            .then(response => this.setState({ data: response, isPageLoading: false }))
             .catch(error => {
                 window.location.replace('/404');
             })
@@ -42,6 +42,8 @@ class ArticleContent extends React.Component {
         // DangerouslySet HTML, we accept this risk since content is self-controlled via publishing
         return (
             <div id='article-content-wrapper'>
+                {this.state.isPageLoading === true && <Loading />}
+
                 {articleMetadata !== undefined && <div id='article-metadata-wrapper'>
                     <div id='article-metadata-info'>
                         <p id='article-metadata-date'>{localizedDate}</p>
