@@ -10,10 +10,10 @@ class Footer extends React.Component{
         return (
             <div id='footer-wrapper'>
                 <span id='footer-icon-wrapper'>
-                    <a href='https://github.com/Zaaptastic/'>
+                    <a href='https://github.com/Zaaptastic/' target='_blank' rel='noopener noreferrer'>
                         <img src={social_icon_github} className='footer-icon'></img>
                     </a>
-                    <a href='https://www.linkedin.com/'>
+                    <a href='https://www.linkedin.com/' target='_blank' rel='noopener noreferrer'>
                         <img src={social_icon_linkedin} className='footer-icon'></img>
                     </a>
                     <a href='mailto: rbchen16+blog@gmail.com'>
