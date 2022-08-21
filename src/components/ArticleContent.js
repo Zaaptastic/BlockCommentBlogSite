@@ -17,10 +17,15 @@ class ArticleContent extends React.Component {
     }
 
     componentDidMount() {
+        var shouldHideDevoBanner = new URLSearchParams(window.location.search)
+            .get('hideLoadingWhenComplete');
+        var valueWhenFinishedLoading = shouldHideDevoBanner === 'true' || shouldHideDevoBanner === '1'
+
         fetchArticleContent(this.props.params.articleId)
-            .then(response => this.setState({ data: response, isPageLoading: false }))
+            .then(response => this.setState({ data: response, isPageLoading: valueWhenFinishedLoading }))
             .catch(error => {
                 window.location.replace('/404');
+                console.log(error);
             })
     }
 

@@ -14,8 +14,11 @@ class ArticleArchive extends React.Component {
     }
 
     componentDidMount() {
+        var shouldHideDevoBanner = new URLSearchParams(window.location.search)
+            .get('hideLoadingWhenComplete');
+        var valueWhenFinishedLoading = shouldHideDevoBanner === 'true' || shouldHideDevoBanner === '1'
         fetchArticleMetadata()
-            .then(response => this.setState({ data: response, isPageLoading: false }));
+            .then(response => this.setState({ data: response, isPageLoading: valueWhenFinishedLoading }));
     }
 
     render() {
