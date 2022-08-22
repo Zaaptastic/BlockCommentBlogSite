@@ -25,6 +25,11 @@ class Header extends React.Component {
                     <MobileView>
                         <img src={menuIcon} onClick={toggleMobileMenu} id='mobile-menu-icon' />
                         <span id='navigation-mobile' className='hidden-area'>
+                            
+                            <div className='naviation-item-mobile'>
+                                <img src={menuCloseIcon} onClick={toggleMobileMenu} id='mobile-menu-close-icon' />
+                            </div>
+
                             <div className='naviation-item-mobile'>
                                 <a href='/' className='navigation-link'>Posts</a>
                             </div>
@@ -58,11 +63,13 @@ var menuIsShown = false;
 function toggleMobileMenu() {
     if (menuIsShown === false) {
         document.getElementById('root').classList.add('dim-area');
+        document.getElementById('header').classList.add('dim-area');
         document.getElementById('navigation-mobile').classList.remove('hidden-area');
         document.getElementById('mobile-menu-icon').src = menuCloseIcon
         menuIsShown = true;
     } else {
         document.getElementById('root').classList.remove('dim-area');
+        document.getElementById('header').classList.remove('dim-area');
         document.getElementById('navigation-mobile').classList.add('hidden-area');
         document.getElementById('mobile-menu-icon').src = menuIcon
         menuIsShown = false;
