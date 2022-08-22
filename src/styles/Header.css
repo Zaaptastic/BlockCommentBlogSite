@@ -24,6 +24,38 @@
     padding-top: 10px;
 }
 
+#navigation-mobile {
+    float: right;
+    width: 50%;
+    height: 100%;
+    text-align: right;
+    font-weight: bold;
+    padding-right: 2%;
+    padding-top: 10px;
+    background-color: var(--main-white);
+}
+
+.naviation-item-mobile {
+    padding-bottom: 5%;
+}
+
 .navigation-link {
     padding-right: 5%;
+}
+
+#mobile-menu-icon {
+    height: 30px;
+    float: right;
+    padding-right: 3%;
+    padding-top: 10px;
+}
+
+/* For mobile JS functionality to toggle menu */
+.dim-area {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.hidden-area {
+    display: none;
+    transition: all .5s ease-in-out;
 }

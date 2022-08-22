@@ -1,4 +1,4 @@
-#footer-wrapper {
+#footer-wrapper-desktop {
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -6,13 +6,18 @@
 }
 
 #footer-icon-wrapper {
-    float: right;
     width: 100%;
     padding-right: 2%;
 }
 
-.footer-icon {
+.footer-icon-desktop {
     float: right;
     padding-right: 1%;
     height: 35px;
+}
+
+.footer-icon-mobile {
+    float: right;
+    padding-right: 5%;
+    height: 25px;
 }
