@@ -1,6 +1,8 @@
 import '../styles/ArticleSummary.css'
 import React from 'react';
 
+import { isMobile } from 'react-device-detect';
+
 class ArticleSummary extends React.Component{
     render() {
         var url = "/article/" + this.props.articleId + "/" + this.props.title.replaceAll(' ', '-');
@@ -14,6 +16,7 @@ class ArticleSummary extends React.Component{
         parsedTags.sort();
 
         if (this.props.isHero === true) {
+            // Note: should not be rendered on Mobile, see gating in ArticleArchive
             return (
                 <div id='hero-article-summary-wrapper'>
                     <div id='hero-article-info'>
@@ -31,16 +34,31 @@ class ArticleSummary extends React.Component{
                 </div>
             );
         } else {
-            return (
-                <div id='standard-article-summary-wrapper' className='article-summary'>
-                    <div id='standard-article-image-wrapper'>
-                        <img src={this.props.imageUrl} alt={this.props.title} id='standard-article-image' />
+            if (isMobile) {
+                return (
+                    <div id='standard-article-summary-wrapper-mobile' className='article-summary'>
+                        <p id='standard-article-date-time'>{localizedDate}</p>
+                        <h2 id='standard-article-title'><a href={url}>{this.props.title}</a></h2>
+                        <p id='standard-article-date-time'> {this.props.estimatedReadingTime} minute read</p>
+                        <img src={this.props.imageUrl} alt={this.props.title} id='standard-article-image-mobile' />
+                        <p id='standard-article-summary'>{this.props.summary}</p>
+                        {parsedTags.map(tag => {
+                            return <span className='mobile-article-tag' key={tag}>{tag}</span>
+                        })}
                     </div>
-                    <h2 id='standard-article-title'><a href={url}>{this.props.title}</a></h2>
-                    <p id='standard-article-date-time'>{localizedDate} • {this.props.estimatedReadingTime} minute read</p>
-                    <p id='standard-article-summary'>{this.props.summary}</p>
-                </div>
-            );
+                );
+            } else {
+                return (
+                    <div id='standard-article-summary-wrapper-desktop' className='article-summary'>
+                        <div id='standard-article-image-wrapper-desktop'>
+                            <img src={this.props.imageUrl} alt={this.props.title} id='standard-article-image-desktop' />
+                        </div>
+                        <h2 id='standard-article-title'><a href={url}>{this.props.title}</a></h2>
+                        <p id='standard-article-date-time'>{localizedDate} • {this.props.estimatedReadingTime} minute read</p>
+                        <p id='standard-article-summary'>{this.props.summary}</p>
+                    </div>
+                );
+            }
         }
     }
 }

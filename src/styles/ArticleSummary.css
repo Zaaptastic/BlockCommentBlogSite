@@ -47,7 +47,18 @@
     background-color: var(--main-dark-blue);
 }
 
-#standard-article-summary-wrapper {
+.mobile-article-tag {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-right: 10px;
+    border-radius: 2rem;
+    background-color: var(--main-light-blue);
+    color: var(--main-white);
+}
+
+#standard-article-summary-wrapper-desktop {
     float: left;
     width: 21%;
     background: #d9d9d9;
@@ -61,14 +72,28 @@
     font-size: 20px;
 }
 
+#standard-article-summary-wrapper-mobile {
+    padding-bottom: 15%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
 #standard-article-date-time {
     font-size: 13px;
 }
 
-#standard-article-image-wrapper {
+#standard-article-image-wrapper-desktop {
     text-align: center;
 }
 
-#standard-article-image {
+#standard-article-image-wrapper-mobile {
+    text-align: center;
+}
+
+#standard-article-image-desktop {
     width: 90%;
+}
+
+#standard-article-image-mobile {
+    width: 100%;
 }

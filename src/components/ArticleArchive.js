@@ -4,6 +4,7 @@ import React from 'react';
 import ArticleSummary from './ArticleSummary'
 import Loading from './Loading'
 import { fetchArticleMetadata } from '../utils/AwsFunctions'
+import { isMobile } from 'react-device-detect';
 
 
 class ArticleArchive extends React.Component {
@@ -23,13 +24,20 @@ class ArticleArchive extends React.Component {
 
     render() {
         var articles = this.state.data;
-        var heroArticle = this.state.data.shift();
+        var heroArticle = undefined;
+        var archiveWrapperId = 'article-archive-wrapper-mobile';
+        
+        // If desktop, heroArticle does not get populated, resulting in all articles rendering equivalently
+        if (!isMobile) {
+            heroArticle = this.state.data.shift();
+            archiveWrapperId = 'article-archive-wrapper-desktop';
+        }
         
         return (
-            <div id='article-archive-wrapper'>
+            <div id={archiveWrapperId} >
                 {this.state.isPageLoading === true && <Loading />}
-                <div id='hero-article-wrapper'>
-                    {heroArticle !== undefined &&
+                
+                {heroArticle !== undefined && <div id='hero-article-wrapper'>
                         <ArticleSummary
                             title={heroArticle.title.S}
                             articleId={heroArticle.articleId.S}
@@ -40,8 +48,8 @@ class ArticleArchive extends React.Component {
                             tags={heroArticle.tags.L}
                             isHero={true}
                         />
-                    }
-                </div>
+                    </div>
+                }
 
                 <div id='article-history-wrapper'>
                     {articles.map(article => {

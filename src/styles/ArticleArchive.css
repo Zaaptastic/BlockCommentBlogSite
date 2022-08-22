@@ -1,5 +1,4 @@
-#article-archive-wrapper {
-    width: 100%;
+#article-archive-wrapper-desktop {
     background: linear-gradient(to bottom, var(--main-light-blue) 75vh, var(--main-white) 75vh 100vh);
 }
 
