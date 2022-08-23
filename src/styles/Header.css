@@ -2,12 +2,22 @@
     background-color: var(--main-white);
 }
 
-#header {
+#header-desktop {
     height: 50px;
     width: 100%;
     padding-bottom: 1%;
     padding-top: 1%;
     font-size: 20px;
+}
+
+#header-mobile {
+    position: fixed;
+    height: 50px;
+    width: 100%;
+    padding-bottom: 1%;
+    padding-top: 1%;
+    font-size: 20px;
+    background-color: var(--main-white);
 }
 
 #logo-image {
@@ -35,6 +45,7 @@
     font-weight: bold;
     padding-right: 2%;
     padding-top: 10px;
+    top: 50px;
     right: 0;
     background-color: var(--main-white);
 }
@@ -69,5 +80,4 @@
 
 .hidden-area {
     display: none;
-    transition: all .5s ease-in-out;
 }
