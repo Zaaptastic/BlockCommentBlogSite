@@ -2,10 +2,6 @@
     background: linear-gradient(to bottom, var(--main-light-blue) 75vh, var(--main-white) 75vh 100vh);
 }
 
-#article-archive-wrapper-mobile {
-    padding-top: 15%;
-}
-
 #hero-article-wrapper {
     height: 50vh;
     width: 84%;
