@@ -1,4 +1,4 @@
-#article-content-wrapper {
+#article-content-wrapper-desktop {
     height: 100vh;
     width: 84%;
     margin: 0;
@@ -8,20 +8,43 @@
     padding-bottom: 5vh;
 }
 
+#article-content-wrapper-mobile {
+    width: 84%;
+    margin: 0;
+    padding-left: 8%;
+    padding-right: 8%;
+    padding-top: 10%;
+    padding-bottom: 5vh;
+}
+
 /*  
  *  Much of this is copied from the Hero Article CSS in ArticleSummary
  *  TODO: Refactor Hero Data handling into a single structure
  */
 
-#article-metadata-wrapper {
+#article-metadata-wrapper-desktop {
     display: inline-block;
     padding-bottom: 5%;
     padding-left: 3%;
     padding-right: 3%;
 }
 
-#article-metadata-info {
+#article-metadata-wrapper-mobile {
+    display: inline-block;
+    padding-bottom: 10%;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+#article-metadata-info-desktop {
     width: 50%;
+    float: left;
+    padding-top: 2%;
+    padding-right: 5%;
+}
+
+#article-metadata-info-mobile {
+    width: 100%;
     float: left;
     padding-top: 2%;
     padding-right: 5%;
@@ -52,7 +75,7 @@
     font-size: 30px;
 }
 
-.article-metadata-tag {
+.article-metadata-tag-desktop {
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 2px;
@@ -63,9 +86,27 @@
     color: var(--main-white);
 }
 
-#article-content-text {
+.article-metadata-tag-mobile {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-right: 10px;
+    border-radius: 2rem;
+    background-color: var(--main-light-blue);
+    color: var(--main-white);
+}
+
+#article-content-text-desktop {
     padding-top: 2%;
     padding-left: 10%;
     padding-right: 10%;
+    padding-bottom: 5%;
+}
+
+#article-content-text-mobile {
+    padding-top: 2%;
+    padding-left: 3%;
+    padding-right: 3%;
     padding-bottom: 5%;
 }

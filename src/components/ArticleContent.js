@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 
 import Loading from './Loading'
 import { fetchArticleContent } from '../utils/AwsFunctions'
+import { isMobile, MobileView, BrowserView } from 'react-device-detect';
 
 function withParams(Component) {
     return props => <Component {...props} params={useParams()} />;
@@ -44,30 +45,59 @@ class ArticleContent extends React.Component {
             parsedTags.sort();
         }
 
+        var articleContentWrapperId = 'article-content-wrapper-desktop';
+        if (isMobile) {
+            articleContentWrapperId = 'article-content-wrapper-mobile';
+        }
+
         // DangerouslySet HTML, we accept this risk since content is self-controlled via publishing
         return (
-            <div id='article-content-wrapper'>
+            <div id={articleContentWrapperId}>
                 {this.state.isPageLoading === true && <Loading />}
 
-                {articleMetadata !== undefined && <div id='article-metadata-wrapper'>
-                    <div id='article-metadata-info'>
-                        <p id='article-metadata-date'>{localizedDate}</p>
-                        <h1 id='article-metadata-title'>{articleMetadata.title.S}</h1>
-                        <p id='article-metadata-reading-time'>{articleMetadata.estimatedReadingTime.N} minute read</p>
-                        <p id='article-metadatae-summary'>{articleMetadata.summary.S}</p>
-                        {parsedTags.map(tag => {
-                            return <span className='article-metadata-tag' key={tag}>{tag}</span>
-                        })}
+                <BrowserView>
+                    {articleMetadata !== undefined && <div id='article-metadata-wrapper-desktop'>
+                        <div id='article-metadata-info-desktop'>
+                            <p id='article-metadata-date'>{localizedDate}</p>
+                            <h1 id='article-metadata-title'>{articleMetadata.title.S}</h1>
+                            <p id='article-metadata-reading-time'>{articleMetadata.estimatedReadingTime.N} minute read</p>
+                            <p id='article-metadatae-summary'>{articleMetadata.summary.S}</p>
+                            {parsedTags.map(tag => {
+                                return <span className='article-metadata-tag-desktop' key={tag}>{tag}</span>
+                            })}
+                        </div>
+                        <div id='article-metadata-image-wrapper'>
+                            <img src={articleMetadata.imageUrlSmall.S} alt={articleMetadata.title.S} id='article-metadata-image' />
+                        </div>
                     </div>
-                    <div id='article-metadata-image-wrapper'>
-                        <img src={articleMetadata.imageUrlSmall.S} alt={articleMetadata.title.S} id='article-metadata-image' />
-                    </div>
-                </div>
-                }
+                    }
 
-                <hr />
+                    <hr />
+    
+                    <p id ='article-content-text-desktop' dangerouslySetInnerHTML={{ __html: this.state.data.content }} />
+                </BrowserView>
 
-                <p id ='article-content-text' dangerouslySetInnerHTML={{ __html: this.state.data.content }} />
+                <MobileView>
+                    {articleMetadata !== undefined && <div id='article-metadata-wrapper-mobile'>
+                            <div id='article-metadata-info-mobile'>
+                                <p id='article-metadata-date'>{localizedDate}</p>
+                                <h1 id='article-metadata-title'>{articleMetadata.title.S}</h1>
+                                <p id='article-metadata-reading-time'>{articleMetadata.estimatedReadingTime.N} minute read</p>
+                                <img src={articleMetadata.imageUrlSmall.S} alt={articleMetadata.title.S} id='article-metadata-image' />
+
+                                <p id='article-metadatae-summary'>{articleMetadata.summary.S}</p>
+                                {parsedTags.map(tag => {
+                                    return <span className='article-metadata-tag-mobile' key={tag}>{tag}</span>
+                                })}
+                            </div>
+
+                        </div>
+                        }
+
+                        <hr />
+        
+                        <p id ='article-content-text-mobile' dangerouslySetInnerHTML={{ __html: this.state.data.content }} />
+                    </MobileView>
             </div>);
     }
 }
