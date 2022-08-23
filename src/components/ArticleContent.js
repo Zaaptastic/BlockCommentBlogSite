@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import Loading from './Loading'
 import { fetchArticleContent } from '../utils/AwsFunctions'
 import { isMobile, MobileView, BrowserView } from 'react-device-detect';
+import { marked } from 'marked';
 
 function withParams(Component) {
     return props => <Component {...props} params={useParams()} />;
@@ -14,7 +15,7 @@ class ArticleContent extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { data: {}, isPageLoading: true }
+        this.state = { data: { content: '' }, isPageLoading: true }
     }
 
     componentDidMount() {
@@ -50,6 +51,11 @@ class ArticleContent extends React.Component {
             articleContentWrapperId = 'article-content-wrapper-mobile';
         }
 
+        var content = this.state.data.content;
+        if (!content.startsWith('<html>')) {
+            content = marked.parse(content);
+        }
+
         // DangerouslySet HTML, we accept this risk since content is self-controlled via publishing
         return (
             <div id={articleContentWrapperId}>
@@ -74,7 +80,7 @@ class ArticleContent extends React.Component {
 
                     <hr />
     
-                    <p id ='article-content-text-desktop' dangerouslySetInnerHTML={{ __html: this.state.data.content }} />
+                    <p id ='article-content-text-desktop' dangerouslySetInnerHTML={{ __html: content }} />
                 </BrowserView>
 
                 <MobileView>
@@ -96,7 +102,7 @@ class ArticleContent extends React.Component {
 
                         <hr />
         
-                        <p id ='article-content-text-mobile' dangerouslySetInnerHTML={{ __html: this.state.data.content }} />
+                        <p id ='article-content-text-mobile' dangerouslySetInnerHTML={{ __html: content }} />
                     </MobileView>
             </div>);
     }
