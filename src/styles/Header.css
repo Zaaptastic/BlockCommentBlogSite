@@ -30,7 +30,7 @@
 #navigation-mobile {
     position: fixed;
     float: right;
-    width: 50%;
+    width: 40%;
     text-align: right;
     font-weight: bold;
     padding-right: 2%;
@@ -59,9 +59,12 @@
     padding-right: 3%;
 }
 
-/* For mobile JS functionality to toggle menu */
-.dim-area {
+#mobile-grey-area {
+    position: fixed;
     background-color: rgba(0, 0, 0, 0.5);
+    height: 100vh;
+    width: 100vw;
+
 }
 
 .hidden-area {

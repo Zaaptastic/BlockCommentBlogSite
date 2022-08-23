@@ -16,16 +16,17 @@ class Header extends React.Component {
         if ('development' === process.env.NODE_ENV
             && shouldHideDevoBanner !== '1'
             && shouldHideDevoBanner !== 'true') {
-                logo = logoDevo;
+            logo = logoDevo;
         }
         return (
             <div id='header-wrapper'>
+                <span id='mobile-grey-area' className='hidden-area' onClick={toggleMobileMenu} />
                 <div id='header'>
                     <a href='/'><img src={logo} id='logo-image'></img></a>
                     <MobileView>
                         <img src={menuIcon} onClick={toggleMobileMenu} id='mobile-menu-icon' />
                         <span id='navigation-mobile' className='hidden-area'>
-                            
+
                             <div className='naviation-item-mobile'>
                                 <img src={menuCloseIcon} onClick={toggleMobileMenu} id='mobile-menu-close-icon' />
                             </div>
@@ -41,8 +42,8 @@ class Header extends React.Component {
                             <div className='naviation-item-mobile'>
                                 <Footer />
                             </div>
-                            
-                            
+
+
                         </span>
                     </MobileView>
 
@@ -62,14 +63,12 @@ class Header extends React.Component {
 var menuIsShown = false;
 function toggleMobileMenu() {
     if (menuIsShown === false) {
-        document.getElementById('root').classList.add('dim-area');
-        document.getElementById('header').classList.add('dim-area');
+        document.getElementById('mobile-grey-area').classList.remove('hidden-area');
         document.getElementById('navigation-mobile').classList.remove('hidden-area');
         document.getElementById('mobile-menu-icon').src = menuCloseIcon
         menuIsShown = true;
     } else {
-        document.getElementById('root').classList.remove('dim-area');
-        document.getElementById('header').classList.remove('dim-area');
+        document.getElementById('mobile-grey-area').classList.add('hidden-area');
         document.getElementById('navigation-mobile').classList.add('hidden-area');
         document.getElementById('mobile-menu-icon').src = menuIcon
         menuIsShown = false;
