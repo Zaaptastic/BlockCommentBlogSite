@@ -1,5 +1,6 @@
 import './styles/App.css';
 
+import AboutMe from './components/AboutMe'
 import ArticleArchive from './components/ArticleArchive'
 import ArticleContent from './components/ArticleContent'
 import ErrorContent from './components/ErrorContent'
@@ -22,6 +23,7 @@ function App() {
           <Route path="posts" >
             <Route path=":articleId/*" element={<ArticleContent />} />
           </Route>
+          <Route path='about' element={<AboutMe />} />
           <Route path="*" element={<ErrorContent />} />
         </Routes>
       </BrowserRouter>
