@@ -19,7 +19,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<ArticleArchive />} />
-          <Route path="article" >
+          <Route path="posts" >
             <Route path=":articleId/*" element={<ArticleContent />} />
           </Route>
           <Route path="*" element={<ErrorContent />} />

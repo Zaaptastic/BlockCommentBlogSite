@@ -5,7 +5,7 @@ import { isMobile } from 'react-device-detect';
 
 class ArticleSummary extends React.Component{
     render() {
-        var url = "/article/" + this.props.articleId + "/" + this.props.title.replaceAll(' ', '-');
+        var url = "/posts/" + this.props.articleId;
         var localizedDate = new Date(this.props.publicationDate)
             .toLocaleDateString('en-US', { dateStyle: 'long' });
 
