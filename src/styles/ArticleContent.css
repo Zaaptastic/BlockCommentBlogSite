@@ -24,6 +24,7 @@
 
 #article-metadata-wrapper-desktop {
     display: inline-block;
+    width: 100%;
     padding-bottom: 5%;
     padding-left: 3%;
     padding-right: 3%;
@@ -53,7 +54,7 @@
 #article-metadata-image-wrapper {
     float: left;
     text-align: right;
-    width: 45%;
+    width: 30%;
     height: 100%;
 }
 
