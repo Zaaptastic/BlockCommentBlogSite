@@ -1,0 +1,42 @@
+#about-me-wrapper {
+    height: 100%;
+}
+
+#about-me-image-wrapper-desktop {
+    padding-top: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+    height: 70vh;
+    float: left;
+}
+
+#about-me-image-wrapper-mobile {
+    padding-top: 15%;
+    text-align: center;
+}
+
+#about-me-image-desktop {
+    width: 25vw;
+}
+
+#about-me-image-mobile {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+#about-me-text-desktop {
+    padding-top: 5%;
+    height: 70vh;
+    padding-right: 5%;
+}
+
+/* Enforce alignment of the first header with the top of the image */
+#about-me-text-desktop > h1:first-of-type {
+    margin-top: 0;
+}
+
+#about-me-text-mobile {
+    padding-top: 5%;
+    padding-left: 10%;
+    padding-right: 10%;
+}
