@@ -3,7 +3,9 @@ import React from 'react';
 
 import Loading from './Loading'
 import { marked } from 'marked';
-import { fetchArticleContent } from '../utils/AwsFunctions'
+import { fetchInvisibleArticleContent } from '../utils/AwsFunctions'
+import { MobileView, BrowserView } from 'react-device-detect';
+
 
 
 class AboutMe extends React.Component {
@@ -18,7 +20,7 @@ class AboutMe extends React.Component {
             .get('hideLoadingWhenComplete');
         var valueWhenFinishedLoading = shouldHideLoadingWhenComplete === 'true' || shouldHideLoadingWhenComplete === '1'
 
-        fetchArticleContent('about-me')
+        fetchInvisibleArticleContent('about-me')
             .then(response => this.setState({ data: response, isPageLoading: valueWhenFinishedLoading }))
             .catch(error => {
                 window.location.replace('/404');
@@ -32,14 +34,29 @@ class AboutMe extends React.Component {
         if (!content.startsWith('<html>')) {
             content = marked.parse(content);
         }
-
+        console.log(this.state.data);
         return (<div id='about-me-wrapper'>
-            
+
             {this.state.isPageLoading === true && <Loading />}
-            <p id ='about-me-text-desktop' dangerouslySetInnerHTML={{ __html: content }} />
+
+            <BrowserView>
+                {this.state.data.metadata !== undefined && <div id='about-me-image-wrapper-desktop'>
+                    <img src={this.state.data.metadata.imageUrl.S} alt='Bobby Chen' id='about-me-image-desktop' />
+                    <p id='about-me-text-desktop' dangerouslySetInnerHTML={{ __html: content }} />
+                </div>
+                }
+            </BrowserView>
+
+            <MobileView>
+                {this.state.data.metadata !== undefined && <div id='about-me-image-wrapper-mobile'>
+                    <img src={this.state.data.metadata.imageUrl.S} alt='Bobby Chen' id='about-me-image-mobile' />
+                    <p id='about-me-text-mobile' dangerouslySetInnerHTML={{ __html: content }} />
+                </div>
+                }
+            </MobileView>
 
         </div>);
-        
+
     }
 }
 

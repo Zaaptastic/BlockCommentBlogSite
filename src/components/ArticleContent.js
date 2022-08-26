@@ -23,7 +23,7 @@ class ArticleContent extends React.Component {
             .get('hideLoadingWhenComplete');
         var valueWhenFinishedLoading = shouldHideLoadingWhenComplete === 'true' || shouldHideLoadingWhenComplete === '1'
 
-        fetchArticleContent(this.props.params.articleId)
+        fetchArticleContent(this.props.params.articleId, false)
             .then(response => this.setState({ data: response, isPageLoading: valueWhenFinishedLoading }))
             .catch(error => {
                 window.location.replace('/404');

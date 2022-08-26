@@ -26,14 +26,19 @@ export async function fetchArticleMetadata() {
   return json.body;
 }
 
-export async function fetchArticleContent(inputArticleId) {
+export async function fetchInvisibleArticleContent(inputArticleId) {
+  return fetchArticleContent(inputArticleId, true);
+}
+
+export async function fetchArticleContent(inputArticleId, shouldSearchInvisibleArticles) {
   var functionName = 'BlockCommentBlogBackend_getArticle_devo';
   if ('production' === process.env.NODE_ENV) {
     functionName = 'BlockCommentBlogBackend_getArticle';
   }
 
   var payload = {
-    articleId: inputArticleId
+    articleId: inputArticleId,
+    shouldSearchInvisibleArticles: shouldSearchInvisibleArticles
   }
   var params = {
     FunctionName: functionName,
