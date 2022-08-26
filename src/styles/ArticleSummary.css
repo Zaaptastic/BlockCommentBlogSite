@@ -1,6 +1,5 @@
 #hero-article-summary-wrapper {
     height: 100%;
-    display: inline-block;
 }
 
 #hero-article-info {
@@ -13,7 +12,7 @@
 
 #hero-article-image-wrapper {
     float: left;
-    text-align: right;
+    text-align: center;
     width: 45%;
     height: 100%;
 }
