@@ -22,12 +22,14 @@
 #about-me-image-mobile {
     padding-left: 10%;
     padding-right: 10%;
+    width: 80%;
 }
 
 #about-me-text-desktop {
     padding-top: 5%;
     height: 70vh;
     padding-right: 5%;
+    padding-bottom: 5%;
 }
 
 /* Enforce alignment of the first header with the top of the image */
@@ -39,4 +41,5 @@
     padding-top: 5%;
     padding-left: 10%;
     padding-right: 10%;
+    padding-bottom: 5%;
 }
