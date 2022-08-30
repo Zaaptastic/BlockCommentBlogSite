@@ -1,0 +1,30 @@
+nav {
+    position: sticky;
+    position: -webkit-sticky;
+    /* For Safari */
+    top: 5vh;
+    /* How far down the page you want your ToC to live */
+
+    width: 15vw;
+    padding-top: 3vh;
+    padding-right: 2vw;
+    float: left;
+
+    /* Give table of contents a scrollbar */
+    max-height: calc(100vh - 40px);
+    overflow: auto;
+}
+
+.toc-heading-link {
+    color: grey;
+    text-decoration: none;
+}
+
+li.active > .toc-heading-link {
+    color: var(--main-dark-blue);
+}
+
+li > .toc-heading-link:hover {
+    color: var(--main-dark-blue);
+    text-decoration: none;
+}

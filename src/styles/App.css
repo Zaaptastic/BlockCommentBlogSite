@@ -23,3 +23,15 @@ html, body {
 a:hover {
   text-decoration: underline;
 }
+
+/* For table of contents smooth scroll functionality */
+h2, h3 {
+  scroll-margin-top: 5vh;
+}
+/* Safari-only */
+@supports (-webkit-hyphens:none) {
+  h2, h3 {
+      padding-top: 5vh;
+      margin-top: -5vh;
+  }
+}
