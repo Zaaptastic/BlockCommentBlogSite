@@ -15,6 +15,9 @@ function withParams(Component) {
 
 class ArticleContent extends React.Component {
 
+    // Global headings values to avoid setting to state and triggering a re-render
+    allHeadings = new Map();
+
     constructor(props) {
         super(props);
         this.state = { data: { content: '' }, isPageLoading: true, activeHeadingId: '' }
@@ -34,33 +37,32 @@ class ArticleContent extends React.Component {
         this.componentDidUpdate();
     }
 
-    /* This needs significant improvements.
-    */
     componentDidUpdate() {
         const callback = (headings) => {
-            console.log(headings);
-
-            var visibleHeadings = [];
+            // `headings` will include all changed headings from a scroll event (including the entire set on first load.)
+            // We need to go through each and update the corresponding value in the global set.
             headings.forEach(headingElement => {
-                if (headingElement.isIntersecting) {
-                    visibleHeadings.push(headingElement);
+                var headingElementId = headingElement.target.id;
+                var isHeadingElementIntersecting = headingElement.isIntersecting;
+                this.allHeadings.set(headingElementId, isHeadingElementIntersecting);
+            });
+            // After updating the status of all headings, find the first one that's intersecting and consider it 'active'.
+            // If no headings are intersecting, consider whatever is currently active to continue being the active heading.
+            var foundActiveHeadingInCurrentIntersectionUpdate = false;
+            this.allHeadings.forEach((isHeadingElementIntersecting, headingElementId) => {
+                if (!foundActiveHeadingInCurrentIntersectionUpdate && isHeadingElementIntersecting) {
+                    // Avoid recursive calls to componentDidUpdate when the active heading is not changing
+                    if (this.state.activeHeadingId !== headingElementId) {
+                        this.setState({ activeHeadingId: headingElementId });
+                    }
+                    foundActiveHeadingInCurrentIntersectionUpdate = true;
                 }
             });
-
-            var topVisibleHeadingId = this.state.activeHeadingId;
-            if (visibleHeadings.length > 0) {
-                topVisibleHeadingId = visibleHeadings[0].target.id;
-            }
-
-            // Check if the current state is already set to the state to avoid recursive triggers
-            if (this.state.activeHeadingId !== topVisibleHeadingId) {
-                this.setState({ activeHeadingId: topVisibleHeadingId });
-            }
         };
 
         const observer = new IntersectionObserver(callback, {
-            rootMargin: "0px",
-            threshold: 0.5
+            // Consider bottom portion of page to be "unactive"
+            rootMargin: "0px 0px -30% 0px"
         });
 
         // Update to include h3 if support is needed.
@@ -116,8 +118,6 @@ class ArticleContent extends React.Component {
             // Re-enable h3 support if needed
             headings = getNestedHeadings(document.querySelectorAll("h2"));
         }
-
-        console.log(this.state.activeHeadingId);
 
         return (
             <div id={articleContentWrapperId}>

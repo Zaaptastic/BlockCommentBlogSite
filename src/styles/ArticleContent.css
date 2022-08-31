@@ -105,7 +105,8 @@
     padding-top: 2vh;
     padding-right: 5vw;
     padding-left: 17vw;
-    padding-bottom: 5%;
+    /* High bottom padding allows for small final headers to still be considered active by Table Of Contents isIntersecting */
+    padding-bottom: 20vh;
     width: 62vw;
 }
 
