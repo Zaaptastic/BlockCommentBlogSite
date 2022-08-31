@@ -9,11 +9,12 @@ export function getNestedHeadings(headingElements) {
 
         if (heading.nodeName === "H2") {
             nestedHeadings.push({ id, title, items: [] });
-        } else if (heading.nodeName === "H3" && nestedHeadings.length > 0) {
-            nestedHeadings[nestedHeadings.length - 1].items.push({
-                id,
-                title,
-            });
+        // Removed h3 support, can be re-enabled if needed
+        //} else if (heading.nodeName === "H3" && nestedHeadings.length > 0) {
+        //    nestedHeadings[nestedHeadings.length - 1].items.push({
+        //        id,
+        //        title,
+        //    });
         }
     });
 
@@ -24,10 +25,10 @@ export function getNestedHeadings(headingElements) {
  * Represents the Headings objects, supporting a single level of nesting, and linking to 
  * the corresponding locations in the document.
  */
-export const Headings = ({ headings }) => (
-    <ul>
+export const Headings = ({ headings, activeHeadingId }) => (
+    <ul id='headings-list'>
       {headings.map((heading) => (
-        <li key={heading.id}>
+        <li key={heading.id} className={heading.id === activeHeadingId ? "active" : ""}>
           <a
             href={`#${heading.id}`}
             className='toc-heading-link'
@@ -43,7 +44,7 @@ export const Headings = ({ headings }) => (
           {heading.items.length > 0 && (
             <ul>
               {heading.items.map((child) => (
-                <li key={child.id}>
+                <li key={child.id} className={child.id === activeHeadingId ? "active" : ""}>
                   <a
                     href={`#${child.id}`}
                     className='toc-heading-link'

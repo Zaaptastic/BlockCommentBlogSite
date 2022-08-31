@@ -1,9 +1,10 @@
 import '../styles/ArticleContent.css'
 import '../styles/TableOfContents.css'
 import React from 'react';
-import { useParams } from "react-router-dom";
-
 import Loading from './Loading'
+
+import { useRef, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { fetchArticleContent } from '../utils/AwsFunctions'
 import { getNestedHeadings, Headings } from '../utils/TableOfContentsUtils'
 import { isMobile, MobileView, BrowserView } from 'react-device-detect';
@@ -17,7 +18,7 @@ class ArticleContent extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { data: { content: '' }, isPageLoading: true }
+        this.state = { data: { content: '' }, isPageLoading: true, activeHeadingId: '' }
     }
 
     componentDidMount() {
@@ -25,11 +26,53 @@ class ArticleContent extends React.Component {
             .get('hideLoadingWhenComplete');
         var valueWhenFinishedLoading = shouldHideLoadingWhenComplete === 'true' || shouldHideLoadingWhenComplete === '1'
         fetchArticleContent(this.props.params.articleId, false)
-            .then(response => this.setState({ data: response, isPageLoading: valueWhenFinishedLoading }))
+            .then(response => this.setState({ data: response, isPageLoading: valueWhenFinishedLoading, activeHeadingId: '' }))
             .catch(error => {
                 window.location.replace('/404');
                 console.log(error);
-            })
+            });
+
+        this.componentDidUpdate();
+    }
+
+    /* This needs significant improvements.
+    */
+    componentDidUpdate() {
+        const callback = (headings) => {
+
+            var visibleHeadings = [];
+            headings.forEach(headingElement => {
+                if (headingElement.isIntersecting) {
+                    visibleHeadings.push(headingElement);
+                }
+            });
+            console.log(visibleHeadings);
+
+            const getIndexFromId = (id) =>
+                headingElements.findIndex((heading) => heading.id === id);
+
+            var topVisibleHeadingId = this.state.activeHeadingId;
+            if (visibleHeadings.length > 0) {
+                topVisibleHeadingId = visibleHeadings[0].target.id;
+            }
+
+            // Check if the current state is already set to the state to avoid recursive triggers
+            if (this.state.activeHeadingId !== topVisibleHeadingId) {
+                this.setState({ activeHeadingId: topVisibleHeadingId });
+            }
+        };
+
+        const observer = new IntersectionObserver(callback, {
+            rootMargin: "0px 0px -30% 0px",
+            threshold: 0.5
+        });
+
+        // Update to include h3 if support is needed.
+        const headingElements = Array.from(document.querySelectorAll("h2"));
+
+        headingElements.forEach((element) => observer.observe(element));
+
+        return () => observer.disconnect();
     }
 
     render() {
@@ -62,7 +105,6 @@ class ArticleContent extends React.Component {
         if (isMobile) {
             articleContentTextId = 'article-content-text-mobile';
         }
-        console.log(articleContentTextId);
 
         // We set the HTML here rather than in the jsx since we must ensure that the DOM is loaded with
         // all of the headers we are looking to render as content so that the dynamic table of contents
@@ -77,6 +119,8 @@ class ArticleContent extends React.Component {
 
             headings = getNestedHeadings(document.querySelectorAll("h2, h3"));
         }
+
+        console.log(this.state.activeHeadingId);
 
         return (
             <div id={articleContentWrapperId}>
@@ -102,7 +146,7 @@ class ArticleContent extends React.Component {
                     <div id='article-content-and-headings-wrapper'>
 
                         <nav>
-                            <Headings headings={headings} />
+                            <Headings headings={headings} activeHeadingId={this.state.activeHeadingId} />
                         </nav>
                         <div id={articleContentTextId} />
 
@@ -133,5 +177,45 @@ class ArticleContent extends React.Component {
             </div>);
     }
 }
+
+const useIntersectionObserver = (setActiveId) => {
+    const headingElementsRef = useRef({});
+    useEffect(() => {
+        const callback = (headings) => {
+            headingElementsRef.current = headings.reduce((map, headingElement) => {
+                map[headingElement.target.id] = headingElement;
+                return map;
+            }, headingElementsRef.current);
+
+            const visibleHeadings = [];
+            Object.keys(headingElementsRef.current).forEach((key) => {
+                const headingElement = headingElementsRef.current[key];
+                if (headingElement.isIntersecting) visibleHeadings.push(headingElement);
+            });
+
+            const getIndexFromId = (id) =>
+                headingElements.findIndex((heading) => heading.id === id);
+
+            if (visibleHeadings.length === 1) {
+                setActiveId(visibleHeadings[0].target.id);
+            } else if (visibleHeadings.length > 1) {
+                const sortedVisibleHeadings = visibleHeadings.sort(
+                    (a, b) => getIndexFromId(a.target.id) > getIndexFromId(b.target.id)
+                );
+                setActiveId(sortedVisibleHeadings[0].target.id);
+            }
+        };
+
+        const observer = new IntersectionObserver(callback, {
+            rootMargin: "0px 0px -40% 0px"
+        });
+
+        const headingElements = Array.from(document.querySelectorAll("h2, h3"));
+
+        headingElements.forEach((element) => observer.observe(element));
+
+        return () => observer.disconnect();
+    }, [setActiveId]);
+};
 
 export default withParams(ArticleContent);

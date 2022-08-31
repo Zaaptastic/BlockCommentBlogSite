@@ -9,10 +9,6 @@ nav {
     padding-top: 3vh;
     padding-right: 2vw;
     float: left;
-
-    /* Give table of contents a scrollbar */
-    max-height: calc(100vh - 40px);
-    overflow: auto;
 }
 
 .toc-heading-link {
@@ -20,11 +16,22 @@ nav {
     text-decoration: none;
 }
 
-li.active > .toc-heading-link {
+li.active>.toc-heading-link {
     color: var(--main-dark-blue);
+    font-weight: bold;
 }
 
-li > .toc-heading-link:hover {
+li>.toc-heading-link:hover {
     color: var(--main-dark-blue);
     text-decoration: none;
+}
+
+#headings-list {
+    list-style-type: none;
+    margin: 0;
+    font-size: 1.25em;
+}
+
+#headings-list>li {
+    padding-bottom: 10px;
 }
