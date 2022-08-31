@@ -3,7 +3,6 @@ import '../styles/TableOfContents.css'
 import React from 'react';
 import Loading from './Loading'
 
-import { useRef, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchArticleContent } from '../utils/AwsFunctions'
 import { getNestedHeadings, Headings } from '../utils/TableOfContentsUtils'
@@ -39,6 +38,7 @@ class ArticleContent extends React.Component {
     */
     componentDidUpdate() {
         const callback = (headings) => {
+            console.log(headings);
 
             var visibleHeadings = [];
             headings.forEach(headingElement => {
@@ -46,10 +46,6 @@ class ArticleContent extends React.Component {
                     visibleHeadings.push(headingElement);
                 }
             });
-            console.log(visibleHeadings);
-
-            const getIndexFromId = (id) =>
-                headingElements.findIndex((heading) => heading.id === id);
 
             var topVisibleHeadingId = this.state.activeHeadingId;
             if (visibleHeadings.length > 0) {
@@ -63,7 +59,7 @@ class ArticleContent extends React.Component {
         };
 
         const observer = new IntersectionObserver(callback, {
-            rootMargin: "0px 0px -30% 0px",
+            rootMargin: "0px",
             threshold: 0.5
         });
 
@@ -117,7 +113,8 @@ class ArticleContent extends React.Component {
             // TODO: Sanitize before doing this
             articleContentTextElement.innerHTML = content;
 
-            headings = getNestedHeadings(document.querySelectorAll("h2, h3"));
+            // Re-enable h3 support if needed
+            headings = getNestedHeadings(document.querySelectorAll("h2"));
         }
 
         console.log(this.state.activeHeadingId);
@@ -177,45 +174,5 @@ class ArticleContent extends React.Component {
             </div>);
     }
 }
-
-const useIntersectionObserver = (setActiveId) => {
-    const headingElementsRef = useRef({});
-    useEffect(() => {
-        const callback = (headings) => {
-            headingElementsRef.current = headings.reduce((map, headingElement) => {
-                map[headingElement.target.id] = headingElement;
-                return map;
-            }, headingElementsRef.current);
-
-            const visibleHeadings = [];
-            Object.keys(headingElementsRef.current).forEach((key) => {
-                const headingElement = headingElementsRef.current[key];
-                if (headingElement.isIntersecting) visibleHeadings.push(headingElement);
-            });
-
-            const getIndexFromId = (id) =>
-                headingElements.findIndex((heading) => heading.id === id);
-
-            if (visibleHeadings.length === 1) {
-                setActiveId(visibleHeadings[0].target.id);
-            } else if (visibleHeadings.length > 1) {
-                const sortedVisibleHeadings = visibleHeadings.sort(
-                    (a, b) => getIndexFromId(a.target.id) > getIndexFromId(b.target.id)
-                );
-                setActiveId(sortedVisibleHeadings[0].target.id);
-            }
-        };
-
-        const observer = new IntersectionObserver(callback, {
-            rootMargin: "0px 0px -40% 0px"
-        });
-
-        const headingElements = Array.from(document.querySelectorAll("h2, h3"));
-
-        headingElements.forEach((element) => observer.observe(element));
-
-        return () => observer.disconnect();
-    }, [setActiveId]);
-};
 
 export default withParams(ArticleContent);
