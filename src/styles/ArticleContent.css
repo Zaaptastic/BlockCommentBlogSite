@@ -104,10 +104,10 @@
 #article-content-text-desktop {
     padding-top: 2vh;
     padding-right: 5vw;
-    padding-left: 17vw;
+    padding-left: 24vw;
     /* High bottom padding allows for small final headers to still be considered active by Table Of Contents isIntersecting */
     padding-bottom: 20vh;
-    width: 62vw;
+    width: 55vw;
 }
 
 #article-content-text-mobile {
@@ -115,4 +115,8 @@
     padding-left: 3%;
     padding-right: 3%;
     padding-bottom: 5%;
+}
+
+hr {
+    margin-bottom: 3%;
 }
