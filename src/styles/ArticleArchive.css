@@ -12,7 +12,16 @@
     display: inline-block;
 }
 
-#article-history-wrapper {
+#article-history-wrapper-desktop {
+    width: 86%;
+    height: 100%;
+    padding-left: 7%;
+    padding-right: 7%;
+    padding-bottom: 5%;
+    margin-top: 0;
+}
+
+#article-history-wrapper-mobile {
     width: 86%;
     height: 100%;
     padding-left: 7%;
@@ -20,4 +29,8 @@
     padding-bottom: 5%;
     margin-top: 0;
     display: inline-block;
+}
+
+.article-history-row {
+
 }
