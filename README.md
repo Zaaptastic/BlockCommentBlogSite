@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+# BlockCommentBlogSite
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Application Code for _Block Comment_, my personal tech blog. You can visit the blog here: https://main.d3ghayqrhrykwx.amplifyapp.com/
 
-## Available Scripts
+## Philosophy
 
-In the project directory, you can run:
+Content on _Block Comment_ is designed to be **scheduled**. This allows it to be updated asynchronously from the core web application code. This also removes complexity of dealing with content problems away from the the application. 
 
-### `npm start`
+Content needs a limited and generic interface to facilitate the style across pages. Ultimately, this is a worthwhile trade-off since these are issues where attention must be paid, anyways. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Delivery of content and its metadata thus must be solved separately. [BlockCommentBlogService](https://github.com/Zaaptastic/BlockCommentBlogService) is an AWS Lambda solution which connects to the relevant backends fetching this data.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Feature Set
 
-### `npm test`
+- Automatic scheduling of new posts in both the Home Page and its dedicated Content Page once it is official published
+- 'Hero' face-out for the most recently published post
+- Mobile display templates
+- Markdown and HTML content support
+- Arbitrary descriptive tag rendering
+- Dynamically generated Table of Contents from scheduled content, including active section tracking while reading
+- Automatic `development` environment detection and styling
+- Automatic error handling for missing/malformed post data and redirection to 404 pages
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Local Instance Launching
 
-### `npm run build`
+Use `npm start` to launch a local development instance. However, this requires several additional items:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- AWS key credentials must be stored in environment variables
+    - `REACT_APP_AWS_ACCESS_KEY_ID`
+    - `REACT_APP_AWS_SECRET_ACCESS_KEY`
+- AWS function names must be updated to accessible functions for the above credentials
+- Additional packages may also be required, consult `package.json` for up-to-date details
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
