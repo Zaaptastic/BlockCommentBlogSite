@@ -29,7 +29,7 @@ class ArticleSummary extends React.Component{
                         })}
                     </div>
                     <div id='hero-article-image-wrapper'>
-                        <img src={this.props.imageUrl} alt={this.props.title} id='hero-article-image' />
+                    <a href={url}><img src={this.props.imageUrl} alt={this.props.title} id='hero-article-image' /></a>
                     </div>
                 </div>
             );
@@ -40,7 +40,9 @@ class ArticleSummary extends React.Component{
                         <p id='standard-article-date-time'>{localizedDate}</p>
                         <h2 id='standard-article-title'><a href={url}>{this.props.title}</a></h2>
                         <p id='standard-article-date-time'> {this.props.estimatedReadingTime} minute read</p>
-                        <img src={this.props.imageUrl} alt={this.props.title} id='standard-article-image-mobile' />
+                        <a href={url}>
+                            <img src={this.props.imageUrl} alt={this.props.title} id='standard-article-image-mobile' />
+                        </a>
                         <p id='standard-article-summary'>{this.props.summary}</p>
                         {parsedTags.map(tag => {
                             return <span className='mobile-article-tag' key={tag}>{tag}</span>
@@ -51,7 +53,9 @@ class ArticleSummary extends React.Component{
                 return (
                     <div id='standard-article-summary-wrapper-desktop' className='article-summary'>
                         <div id='standard-article-image-wrapper-desktop'>
-                            <img src={this.props.imageUrl} alt={this.props.title} id='standard-article-image-desktop' />
+                            <a href={url}>
+                                <img src={this.props.imageUrl} alt={this.props.title} id='standard-article-image-desktop' />
+                            </a>
                         </div>
                         <h2 id='standard-article-title'><a href={url}>{this.props.title}</a></h2>
                         <p id='standard-article-date-time'>{localizedDate} • {this.props.estimatedReadingTime} minute read</p>
