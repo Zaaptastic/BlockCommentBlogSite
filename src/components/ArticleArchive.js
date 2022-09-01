@@ -83,7 +83,7 @@ class ArticleArchive extends React.Component {
                 <BrowserView>
                     <div id='article-history-wrapper-desktop'>
                     {articleRows.map(articleRow => {
-                            return <div key={articleRow} className='article-history-row'>
+                            return <div className='article-history-row'>
                                 {articleRow.map(article => {
                                     return <div key={article.articleId.S}>
                                     <ArticleSummary

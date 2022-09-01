@@ -19,6 +19,7 @@
     padding-right: 7%;
     padding-bottom: 5%;
     margin-top: 0;
+    display: inline-block;
 }
 
 #article-history-wrapper-mobile {
@@ -32,5 +33,5 @@
 }
 
 .article-history-row {
-
+    overflow: auto;
 }
