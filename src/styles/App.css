@@ -35,3 +35,9 @@ h2, h3 {
       margin-top: -5vh;
   }
 }
+
+/* Display span as block elements, and add spacing between rows */
+span {
+  display: inline-block;
+  margin-bottom: 10px;
+}

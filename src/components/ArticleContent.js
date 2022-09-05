@@ -130,9 +130,11 @@ class ArticleContent extends React.Component {
                             <h1 id='article-metadata-title'>{articleMetadata.title.S}</h1>
                             <p id='article-metadata-reading-time'>{articleMetadata.estimatedReadingTime.N} minute read</p>
                             <p id='article-metadatae-summary'>{articleMetadata.summary.S}</p>
-                            {parsedTags.map(tag => {
-                                return <span className='article-metadata-tag-desktop' key={tag}>{tag}</span>
-                            })}
+                            <p id='article-metadata-tags'>
+                                {parsedTags.map(tag => {
+                                    return <span className='article-metadata-tag-desktop' key={tag}>{tag}</span>
+                                })}
+                            </p>
                         </div>
                         <div id='article-metadata-image-wrapper'>
                             <img src={articleMetadata.imageUrlSmall.S} alt={articleMetadata.title.S} id='article-metadata-image' />
@@ -159,9 +161,9 @@ class ArticleContent extends React.Component {
                             <img src={articleMetadata.imageUrlSmall.S} alt={articleMetadata.title.S} id='article-metadata-image' />
 
                             <p id='article-metadatae-summary'>{articleMetadata.summary.S}</p>
-                            {parsedTags.map(tag => {
-                                return <span className='article-metadata-tag-mobile' key={tag}>{tag}</span>
-                            })}
+                                {parsedTags.map(tag => {
+                                    return <span className='article-metadata-tag-mobile' key={tag}>{tag}</span>
+                                })}
                         </div>
 
                     </div>}
