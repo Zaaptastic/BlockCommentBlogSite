@@ -1,5 +1,6 @@
 import '../styles/ArticleContent.css'
 import '../styles/TableOfContents.css'
+import '../styles/prism.css'
 import React from 'react';
 import Loading from './Loading'
 
