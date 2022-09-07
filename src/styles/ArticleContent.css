@@ -125,11 +125,21 @@
     width: 55vw;
 }
 
+#article-content-text-desktop a {
+    color: var(--main-light-blue);
+    font-weight: bold;
+}
+
 #article-content-text-mobile {
     padding-top: 2%;
     padding-left: 3%;
     padding-right: 3%;
     padding-bottom: 5%;
+}
+
+#article-content-text-mobile a {
+    color: var(--main-light-blue);
+    font-weight: bold;
 }
 
 hr {
