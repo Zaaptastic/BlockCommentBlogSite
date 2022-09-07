@@ -1,6 +1,6 @@
 import '../styles/ArticleContent.css'
 import '../styles/TableOfContents.css'
-import '../styles/prism.css'
+import 'highlight.js/styles/atom-one-light.css'
 import React from 'react';
 import Loading from './Loading'
 
@@ -13,6 +13,14 @@ import { marked } from 'marked';
 function withParams(Component) {
     return props => <Component {...props} params={useParams()} />;
 }
+const highlighter = require('highlight.js');
+
+marked.setOptions({
+    highlight: function (code) {
+        return highlighter.highlightAuto(code)
+            .value;
+    }
+});
 
 class ArticleContent extends React.Component {
 
@@ -162,9 +170,9 @@ class ArticleContent extends React.Component {
                             <img src={articleMetadata.imageUrlSmall.S} alt={articleMetadata.title.S} id='article-metadata-image' />
 
                             <p id='article-metadatae-summary'>{articleMetadata.summary.S}</p>
-                                {parsedTags.map(tag => {
-                                    return <span className='article-metadata-tag-mobile' key={tag}>{tag}</span>
-                                })}
+                            {parsedTags.map(tag => {
+                                return <span className='article-metadata-tag-mobile' key={tag}>{tag}</span>
+                            })}
                         </div>
 
                     </div>}
@@ -172,7 +180,6 @@ class ArticleContent extends React.Component {
                     <hr />
                     <div id={articleContentTextId} />
                 </MobileView>
-
 
             </div>);
     }
