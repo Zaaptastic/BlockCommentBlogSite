@@ -69,7 +69,9 @@
 }
 
 #article-metadata-title {
-    font-size: 40px;
+    font-size: 2.5em;
+    margin-top: 1%;
+    margin-bottom: 1%;
 }
 
 #article-metadata-summary {
@@ -101,7 +103,7 @@
 }
 
 #article-content-text-desktop>p>img {
-    max-width: 80%;
+    max-width: 10%;
     display: block;
     margin-left: auto;
     margin-right: auto;
