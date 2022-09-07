@@ -1,5 +1,5 @@
 #article-archive-wrapper-desktop {
-    background: linear-gradient(to bottom, var(--main-light-blue) 75vh, var(--main-white) 75vh 100vh);
+    background: linear-gradient(to bottom, var(--main-light-blue) 80vh, var(--main-white) 80vh 100vh);
 }
 
 #hero-article-wrapper {
@@ -7,8 +7,8 @@
     width: 84%;
     padding-left: 8%;
     padding-right: 8%;
-    padding-top: 8vh;
-    padding-bottom: 5vh;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
     display: inline-block;
 }
 
