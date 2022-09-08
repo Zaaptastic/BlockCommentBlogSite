@@ -159,6 +159,8 @@ code {
     /* Opera 7 */
     word-wrap: break-word;
     /* Internet Explorer 5.5+ */
+    background: #f4f4f4;
+    color: var(--main-orange);
 }
 
 pre {
