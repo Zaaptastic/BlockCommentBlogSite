@@ -175,24 +175,6 @@ pre {
     overflow: auto;
     padding: 1em 1.5em;
     display: block;
-    color: #000;
-    background: 0 0;
-    text-shadow: 0 1px #fff;
-    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-    font-size: 1em;
-    text-align: left;
-    white-space: pre;
-    word-spacing: normal;
-    word-break: normal;
-    word-wrap: normal;
-    line-height: 1.5;
-    -moz-tab-size: 4;
-    -o-tab-size: 4;
-    tab-size: 4;
-    -webkit-hyphens: none;
-    -moz-hyphens: none;
-    -ms-hyphens: none;
-    hyphens: none
 }
 
 code[class*=language-],
@@ -215,4 +197,8 @@ pre[class*=language-] {
     -moz-hyphens: none;
     -ms-hyphens: none;
     hyphens: none
+}
+
+pre span {
+    margin-bottom: 0;
 }
